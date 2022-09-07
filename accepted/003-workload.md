@@ -14,16 +14,14 @@ In other words, pods are multi-tenant by default.
 
 A process can be one of the following types:
 
-| Proc Type   | Description                                                                                     |
-|-----------	|------------------------------------------------------------------------------------------------	|
-| Exec      	| A system executable process, such as a binary or command line program.                         	|
-| Container 	| A system container running in a cgroup namespace, such as a docker container.                  	|
-| MicroVM   	| A system container running with an application specific kernel, such as a firecracker microvm. 	|
+| Proc Type   | Description                                                                                      |
+|------------- |------------------------------------------------------------------------------------------------	|
+| Exec      	  | A system executable process, such as a binary or command line program.                         	|
+| Container 	  | A system container running in a cgroup namespace, such as a docker container.                  	|
+| WAMR         | A lightweight WASM runtime, such as a NodeJS application                                       	|
 
-Pods have a few constraints with regard to process types.
+More on [WAMR](https://github.com/bytecodealliance/wasm-micro-runtime).
 
- - A pod must contain the same process types.
- - A pod must contain only a single `MicroVM`.
 
 ## Subsystems
 
@@ -65,37 +63,9 @@ observe.logs(ingress);
 
 ```
 
-### Example: Single MicroVM Pod
-
-Run an even more isolated workload with aurae.
-
-```typescript
-
-about();
-
-let aurae = connect();
-let runtime = aurae.runtime();
-let observe = aurae.observe();
-
-// Define a microvm
-let isolated = microvm("my-isolated-workload-001");
-isolated.image("mycorp/application:latest");
-
-// Add to a Pod
-let sandbox = pod("sandbox-001");
-sandbox.add(isolated);
-
-// Run the pod
-runtime.run(sandbox);
-
-// Tail the logs
-observe.logs(sandbox);
-
-```
-
 ### Example: A Group of Executables
 
-Group together a set of system executables that run without a container or microvm runtime.
+Group together a set of system executables that run alongside a container in the same cgroup namespace.
 
 ```typescript
 
