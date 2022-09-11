@@ -1,8 +1,5 @@
 # Design / Feature
 
-*TODO for the document:*
-* *analyse and select default policy engine.*
-* *analyse policy engines available in rust.*
 
 This feature will allow an administrative user to authenticate with the node.
 
@@ -11,9 +8,9 @@ This document only covers node authorization. Application authorization is out
 of scope for this proposal.
 
 #### Policy Engine
-[Proposal 002](/accepted/002.md) provides the aurae daemon with an SSH authenticated
-user based upon SSH Certificates. The selected authentication provides identity
-and communication channel encryption.
+[Proposal 002](/accepted/002.md) provides the aurae daemon with an SSH
+authenticated user based upon SSH Certificates. The selected authentication
+provides identity and communication channel encryption.
 
 Authorization consumes the identity provided by Proposal 002. When the user
 connects, the user identity is authenticated directly from the connection. Upon
@@ -23,16 +20,15 @@ The authorization engine receives a message with the identity, action, and
 parameters. The authorization engine returns a decision. Aurae Daemon is
 responsible for enforcing the decision.
 
-A default policy engine will be installed when no other authorization engine
-has been installed.
+A simple default policy engine written in rust will be installed when no other
+authorization engine has been installed. Users may choose to implement their
+own policy engine by implementing the relevant trait.
 
 Authorization decisions default to deny.
 
 Not installing a policy engine causes all requests to be denied.
 
-### Policy Engine Selection
-
-**TODO**
+#### Default Implement
 
 #### Workflow:
 
@@ -49,7 +45,8 @@ auraed-->>client: status
 
 The outcomes of adding support for policy engines are:
 
-* auraed will be capable of handling arbitrary scenarios based upon the connecting client.
+* auraed will be capable of handling arbitrary scenarios based upon the
+  connecting client.
 * policies may be written in languages designed to deal with policy.
 * changes to the policy do not require a recompilation of auraed.
 * policy can be centralized for multiple auraed.
