@@ -32,7 +32,7 @@ This feature will accomplish **data persistency after reboots/restarts/failure**
 
 ### Notes
 
- - The ORM layer is a low oriority decision, that if implemented correctly should be relatively trivial to change. 
+ - The ORM layer is a low priority decision, that if implemented correctly should be relatively trivial to change. 
  - The SQLite decision is a higher stakes decision, which is still relatively low-risk as it can be moved to another SQL compatible backend in the future.
  - The schema will need to be maintained in API alongside the protobuf definitions. Ideally we can come up with a way of cleanly mapping these without risk.
 
