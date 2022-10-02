@@ -38,7 +38,7 @@ As the needs of the project grows we must carefully consider our APIs and do our
 
 Aurae is designed to be a Distributed Operating System and act as a responsible `PID 1/init`.
 
-Security is something we should not compromise on. If Aurae is online, it must be default secure, and easy to keep secure.
+Security is something we should not compromise on. If Aurae is online, it must be default secure, and easy to keep secure by making doing the right thing either built-in, or straight forward and well documented.
 
 Every organization's threat model and appetite for risk is unique. Aurae is designed to mitigate risk through its architecture and implementation decisions.
 
