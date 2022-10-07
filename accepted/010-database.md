@@ -15,7 +15,7 @@ This feature will accomplish **data persistency after reboots/restarts/failure**
 ### Goals
 
  - All **auraed** daemons will ship with this **database**.
- - All **auraed** daemons will have an upgrae/migration strategy of the data **in scope** for the entire project
+ - All **auraed** daemons will have an upgrade/migration strategy of the data **in scope** for the entire project
  - All **aurae project** components will adhere to a version number that is indicitive of the data stored in this database and semver.
  - It will be impossible to recover a system without a key.
  - It will be impossible to access or mutate data without a key.
